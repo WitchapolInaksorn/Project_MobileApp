@@ -79,7 +79,7 @@ class _MyAppState extends State<MyApp> {
                 });
               },
               icon: Text(
-                "💰",
+                "💵",
                 style: TextStyle(
                   fontSize: 30,
                 ),
@@ -92,7 +92,7 @@ class _MyAppState extends State<MyApp> {
                 });
               },
               icon: Text(
-                "📊",
+                "📋",
                 style: TextStyle(
                   fontSize: 30, // ปรับขนาด emoji
                 ),

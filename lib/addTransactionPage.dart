@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 class AddTransactionForm extends StatefulWidget {
   const AddTransactionForm({super.key});
@@ -67,6 +68,38 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
     }
   }
 
+  void addTransactionDialog(BuildContext context) {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.question,
+      animType: AnimType.bottomSlide,
+      title: "Add Transaction",
+      desc: "Are you sure to Add Transaction ?",
+      btnCancelOnPress: () {},
+      btnOkOnPress: () {
+        addTransaction();
+        addSuccess(context);
+      },
+      btnOkText: "Yes, Save",
+      btnCancelText: "Cancel",
+      btnOkColor: Colors.green,
+      btnCancelColor: Colors.red,
+    ).show();
+  }
+
+  void addSuccess(BuildContext context) {
+    AwesomeDialog(
+      context: context,
+      dialogType: DialogType.success,
+      animType: AnimType.bottomSlide,
+      title: "Add Success",
+      desc: "Add Transaction Success",
+      btnOkOnPress: () {},
+      btnOkText: "Save",
+      btnOkColor: Colors.green,
+    ).show();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,14 +121,11 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
               TextFormField(
                 controller: titleController,
                 decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                      color: Color(0xFF3A2E74), fontWeight: FontWeight.bold),
                   labelStyle: TextStyle(
                       color: Color(0xFF3A2E74), fontWeight: FontWeight.bold),
                   fillColor: Color(0xFFBDB2FF),
                   filled: true,
                   labelText: 'Title',
-                  hintText: 'e.g., Food, Gasoline',
                   icon: Icon(
                     Icons.title,
                     color: Color.fromARGB(255, 157, 142, 243),
@@ -119,14 +149,11 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                   ),
                 ],
                 decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                      color: Color(0xFF1E3A5F), fontWeight: FontWeight.bold),
                   labelStyle: TextStyle(
                       color: Color(0xFF1E3A5F), fontWeight: FontWeight.bold),
                   fillColor: Color(0xFFA0C4FF),
                   filled: true,
                   labelText: 'Amount',
-                  hintText: 'e.g., 100.00',
                   icon: Icon(
                     Icons.attach_money,
                     color: Color.fromARGB(255, 122, 171, 250),
@@ -153,8 +180,6 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                   );
                 }).toList(),
                 decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                      color: Color(0xFF2E5832), fontWeight: FontWeight.bold),
                   labelStyle: TextStyle(
                       color: Color(0xFF2E5832), fontWeight: FontWeight.bold),
                   fillColor: Color(0xFFCAFFBF),
@@ -175,14 +200,11 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
               TextFormField(
                 controller: categoryController,
                 decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                      color: Color(0xFF665C00), fontWeight: FontWeight.bold),
                   labelStyle: TextStyle(
                       color: Color(0xFF665C00), fontWeight: FontWeight.bold),
                   fillColor: Color(0xFFFDFFB6),
                   filled: true,
                   labelText: 'Category',
-                  hintText: 'e.g., Food, Travel, Entertainment',
                   icon: Icon(Icons.list, color: Colors.amber),
                   border: OutlineInputBorder(),
                 ),
@@ -250,7 +272,9 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 199, 153, 84)),
-                  onPressed: addTransaction,
+                  onPressed: () {
+                    addTransactionDialog(context);
+                  },
                   child: Text(
                     'Save',
                     style: TextStyle(
