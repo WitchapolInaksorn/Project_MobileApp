@@ -282,7 +282,9 @@ class _UpdateTransactionFormState extends State<UpdateTransactionForm> {
                                 .format(selectedDate!),
                           }).then((_) {
                             Future.delayed(
-                                Duration.zero, () => updateSuccess(context));
+                              Duration.zero,
+                              () => updateSuccess(context),
+                            );
                           });
                         },
                         btnOkText: "Yes, Update",
