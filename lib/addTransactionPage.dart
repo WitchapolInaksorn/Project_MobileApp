@@ -273,7 +273,9 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 199, 153, 84)),
                   onPressed: () {
-                    addTransactionDialog(context);
+                    if (_formKey.currentState!.validate()) {
+                      addTransactionDialog(context);
+                    }
                   },
                   child: Text(
                     'Save',
