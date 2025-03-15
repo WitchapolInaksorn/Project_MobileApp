@@ -68,25 +68,6 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
     }
   }
 
-  void addTransactionDialog(BuildContext context) {
-    AwesomeDialog(
-      context: context,
-      dialogType: DialogType.question,
-      animType: AnimType.bottomSlide,
-      title: "Add Transaction",
-      desc: "Are you sure to Add Transaction ?",
-      btnCancelOnPress: () {},
-      btnOkOnPress: () {
-        addTransaction();
-        addSuccess(context);
-      },
-      btnOkText: "Yes, Save",
-      btnCancelText: "Cancel",
-      btnOkColor: Colors.green,
-      btnCancelColor: Colors.red,
-    ).show();
-  }
-
   void addSuccess(BuildContext context) {
     AwesomeDialog(
       context: context,
@@ -94,7 +75,9 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
       animType: AnimType.bottomSlide,
       title: "Add Success",
       desc: "Add Transaction Success",
-      btnOkOnPress: () {},
+      btnOkOnPress: () {
+        addTransaction();
+      },
       btnOkText: "Save",
       btnOkColor: Colors.green,
     ).show();
@@ -271,17 +254,16 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 199, 153, 84)),
+                      backgroundColor: Color(0xFFB88D5A)),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      addTransactionDialog(context);
+                      addSuccess(context);
                     }
                   },
                   child: Text(
                     'Save',
                     style: TextStyle(
-                        color: const Color.fromARGB(255, 252, 228, 228),
-                        fontWeight: FontWeight.bold),
+                        color: Color(0xFF5A341E), fontWeight: FontWeight.bold),
                   ),
                 ),
               ),

@@ -261,7 +261,7 @@ class _UpdateTransactionFormState extends State<UpdateTransactionForm> {
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFFADAD)),
+                      backgroundColor: Color(0xFFB88D5A)),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       AwesomeDialog(
@@ -297,7 +297,7 @@ class _UpdateTransactionFormState extends State<UpdateTransactionForm> {
                   child: Text(
                     'Update',
                     style: TextStyle(
-                        color: const Color(0xFF5A1F1F),
+                        color: const Color(0xFF5A341E),
                         fontWeight: FontWeight.bold),
                   ),
                 ),
