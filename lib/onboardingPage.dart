@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project/authPage.dart';
 import './onboarding/onboardingData.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -99,7 +99,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
           borderRadius: BorderRadius.circular(8), color: Color(0xFFECBC6C)),
       child: TextButton(
         onPressed: () {
-          // FirebaseAuth.instance.signOut();
+          FirebaseAuth.instance.signOut();
 
           setState(() {
             currentIndex != controller.items.length - 1
